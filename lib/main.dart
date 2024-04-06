@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:storeapp/core/app/env_variables.dart';
 
 void main() async {
@@ -15,7 +16,10 @@ void main() async {
               messagingSenderId: "58046617237",
               projectId: "storeapp-3b378"))
       : await Firebase.initializeApp();
-  runApp(const StoreApp());
+
+  await SystemChrome.setPreferredOrientations(
+          [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp])
+      .then((_) => runApp(const StoreApp()));
 }
 
 class StoreApp extends StatelessWidget {
