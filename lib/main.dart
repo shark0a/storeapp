@@ -4,9 +4,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:storeapp/core/app/env_variables.dart';
 
+import 'store_app.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await EnvVariables.instance.init(envTypeEnum: EnvTypeEnum.dev);
+  // await EnvVariables.instance.init(envTypeEnum: EnvTypeEnum.dev);
   Platform.isAndroid
       ? await Firebase.initializeApp(
           options: const FirebaseOptions(
@@ -16,25 +18,4 @@ void main() async {
               projectId: "storeapp-3b378"))
       : await Firebase.initializeApp();
   runApp(const StoreApp());
-}
-
-class StoreApp extends StatelessWidget {
-  const StoreApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      debugShowCheckedModeBanner: EnvVariables.instance.depugMode,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Shark Store'),
-        ),
-        body: const Text("First line "),
-      ),
-    );
-  }
 }
