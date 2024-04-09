@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:storeapp/common/screens/no_network.dart';
 import 'package:storeapp/core/app/connectivity.dart';
 import 'package:storeapp/core/app/env_variables.dart';
+import 'package:storeapp/core/styles/theme/app_theme.dart';
 
 class StoreApp extends StatelessWidget {
   const StoreApp({super.key});
@@ -17,10 +18,7 @@ class StoreApp extends StatelessWidget {
             designSize: const Size(360, 690),
             minTextAdapt: true,
             child: MaterialApp(
-              theme: ThemeData(
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-                useMaterial3: true,
-              ),
+              theme: themeDark(),
               builder: (context, widget) {
                 return Scaffold(
                   body: Builder(
