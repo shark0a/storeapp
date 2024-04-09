@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:storeapp/common/screens/no_network.dart';
 import 'package:storeapp/core/app/connectivity.dart';
 import 'package:storeapp/core/app/env_variables.dart';
@@ -12,26 +13,30 @@ class StoreApp extends StatelessWidget {
       valueListenable: ConnectivityController.instance.isConnect,
       builder: (_, value, __) {
         if (value) {
-          return MaterialApp(
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
-            ),
-            builder: (context, widget) {
-              return Scaffold(
-                body: Builder(
-                  builder: (context) {
-                    ConnectivityController.instance.init();
-                    return widget!;
-                  },
-                ),
-              );
-            },
-            home: Scaffold(
-              appBar: AppBar(
-                title: const Text('Shark Store'),
+          return ScreenUtilInit(
+            designSize: const Size(360, 690),
+            minTextAdapt: true,
+            child: MaterialApp(
+              theme: ThemeData(
+                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+                useMaterial3: true,
               ),
-              body: const Text("First line "),
+              builder: (context, widget) {
+                return Scaffold(
+                  body: Builder(
+                    builder: (context) {
+                      ConnectivityController.instance.init();
+                      return widget!;
+                    },
+                  ),
+                );
+              },
+              home: Scaffold(
+                appBar: AppBar(
+                  title: const Text('Shark Store'),
+                ),
+                body: const Text("First line "),
+              ),
             ),
           );
         } else {
