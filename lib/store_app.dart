@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:storeapp/common/screens/no_network.dart';
 import 'package:storeapp/core/app/connectivity.dart';
 import 'package:storeapp/core/app/env_variables.dart';
+import 'package:storeapp/core/language/app_localization_setup.dart';
 import 'package:storeapp/core/styles/theme/app_theme.dart';
 
 class StoreApp extends StatelessWidget {
@@ -19,13 +20,24 @@ class StoreApp extends StatelessWidget {
             minTextAdapt: true,
             child: MaterialApp(
               theme: themeDark(),
+              locale: Locale('en'),
+              supportedLocales: AppLocalizationsSetup.supprtedLocales,
+              localeResolutionCallback:
+                  AppLocalizationsSetup.localeResolutionCallback,
+              localizationsDelegates:
+                  AppLocalizationsSetup.localizationsDelegates,
               builder: (context, widget) {
-                return Scaffold(
-                  body: Builder(
-                    builder: (context) {
-                      ConnectivityController.instance.init();
-                      return widget!;
-                    },
+                return GestureDetector(
+                  onTap: () {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  },
+                  child: Scaffold(
+                    body: Builder(
+                      builder: (context) {
+                        ConnectivityController.instance.init();
+                        return widget!;
+                      },
+                    ),
                   ),
                 );
               },

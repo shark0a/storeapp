@@ -36,6 +36,9 @@ dependencies:
     sdk: flutter
   flutter_dotenv: ^5.1.0
   flutter_launcher_icons: ^0.13.1
+  flutter_localization: ^0.2.0
+  flutter_localizations:
+    sdk: flutter
   flutter_native_splash: ^2.3.7
   flutter_screenutil: ^5.9.0
 flutter_icons:
@@ -63,6 +66,11 @@ flutter:
     - assets/images/empty_screen.png
     - assets/images/no_network.jpg
     - assets/images/page_under_build.jpg
+    - lang/ar.json
+    - lang/en.json
+    - .env.prod
+    - .env.dev
+
   fonts:
     #arabic font
     - family: Cairo
