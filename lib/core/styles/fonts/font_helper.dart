@@ -2,5 +2,13 @@ class FontHelper {
   FontHelper._();
   static const String cairoArabic = "Cairo";
   static const String poppinsEng = "Poppins";
-  //TODO:  switch Arabic Font And English Font
+  static String geLocaLozedFontFamily(){
+  //TODO:  sharedPreferance
+  final currentLanguage = 'ar';
+  if(currentLanguage == 'ar'){
+    return cairoArabic;
+  }else{
+    return poppinsEng;
+  }
+  }
 }

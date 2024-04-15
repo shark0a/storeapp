@@ -89,9 +89,9 @@ class MyColors extends ThemeExtension<MyColors> {
     navBarbg: ColorsDark.navBarDark,
     navBarSelectedTab: ColorsDark.white,
     containerShadow1: ColorsDark.black1,
-    containerShadow2: ColorsDark.black2,
+    containerShadow2: ColorsDark.black,
     containerLinear1: ColorsDark.black1,
-    containerLinear2: ColorsDark.black2,
+    containerLinear2: ColorsDark.black,
   );
 
   static const MyColors light = MyColors(
