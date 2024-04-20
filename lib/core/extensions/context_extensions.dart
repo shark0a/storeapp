@@ -13,14 +13,15 @@ extension ContextExt on BuildContext {
   String translate(String langkey) {
     return AppLocalizations.of(this)!.translate(langkey).toString();
   }
+
   //Style
-  TextStyle get textStyle => Theme.of(this).textTheme.bodySmall!; 
+  TextStyle get textStyle => Theme.of(this).textTheme.bodySmall!;
   //Navigator
   Future<dynamic> pushName(String routeName, {Object? arguments}) {
     return Navigator.of(this).pushNamed(routeName, arguments: arguments);
   }
 
-  Future<dynamic> replacement(String routeName, {Object? arguments}) {
+  Future<dynamic> pushReplacementNamed(String routeName, {Object? arguments}) {
     return Navigator.of(this)
         .pushReplacementNamed(routeName, arguments: arguments);
   }

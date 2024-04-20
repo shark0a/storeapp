@@ -5,6 +5,7 @@ import 'package:storeapp/Features/auth/presentions/widget/login/login_text_filed
 import 'package:storeapp/common/widget/text_app.dart';
 import 'package:storeapp/core/extensions/context_extensions.dart';
 import 'package:storeapp/core/language/lang_keys.dart';
+import 'package:storeapp/core/routes/app_routes.dart';
 import 'package:storeapp/core/styles/fonts/font_weight_helper.dart';
 
 import '../widget/mode_and_language_button.dart';
@@ -39,7 +40,9 @@ class LoginBody extends StatelessWidget {
               height: 15,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                context.pushReplacementNamed(AppRoutes.signUp);
+              },
               child: TextApp(
                 text: context.translate(LangKeys.createAccount),
                 theme: context.textStyle.copyWith(
