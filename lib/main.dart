@@ -2,6 +2,11 @@ import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:storeapp/core/app/bolc_observer.dart';
+import 'package:storeapp/core/di/injections_container.dart';
+import 'package:storeapp/core/services/shared_pref.dart';
 
 import 'store_app.dart';
 
@@ -16,5 +21,15 @@ void main() async {
               messagingSenderId: "58046617237",
               projectId: "storeapp-3b378"))
       : await Firebase.initializeApp();
-  runApp(const StoreApp());
+  await SharedPref().instantiatePreferences();
+  await setupInjector();
+  Bloc.observer = AppBlocObserver();
+  await SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ],
+  ).then((_) {
+    runApp(const StoreApp());
+  });
 }
