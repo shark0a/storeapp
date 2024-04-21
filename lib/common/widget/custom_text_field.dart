@@ -41,6 +41,8 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      // obscuringCharacter: '♣',
+
       controller: controller,
       cursorColor: context.color.textColor,
       style: TextStyle(

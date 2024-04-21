@@ -52,7 +52,7 @@ class _LoginTextFiledState extends State<LoginTextFiled> {
                 isShowPass = !isShowPass;
               });
             },
-             icon: isShowPass
+            icon: isShowPass
                 ? const Icon(
                     Icons.visibility_off,
                     color: Colors.white,

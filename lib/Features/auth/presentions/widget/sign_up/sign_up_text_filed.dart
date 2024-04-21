@@ -38,6 +38,7 @@ class _SignUpTextFiledState extends State<SignUpTextFiled> {
         ),
         SizedBox(height: 20.h),
         CustomTextField(
+          obscureText: isshow,
           controller: TextEditingController(),
           hintText: context.translate(LangKeys.password),
           keyboardType: TextInputType.visiblePassword,
