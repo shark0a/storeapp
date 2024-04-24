@@ -19,38 +19,38 @@ mixin _$ApiResult<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T data) success,
-    required TResult Function(String errorHandler) Faliure,
+    required TResult Function(String errorHandler) faliure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T data)? success,
-    TResult? Function(String errorHandler)? Faliure,
+    TResult? Function(String errorHandler)? faliure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T data)? success,
-    TResult Function(String errorHandler)? Faliure,
+    TResult Function(String errorHandler)? faliure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Success<T> value) success,
-    required TResult Function(Faliure<T> value) Faliure,
+    required TResult Function(Faliure<T> value) faliure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Success<T> value)? success,
-    TResult? Function(Faliure<T> value)? Faliure,
+    TResult? Function(Faliure<T> value)? faliure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Success<T> value)? success,
-    TResult Function(Faliure<T> value)? Faliure,
+    TResult Function(Faliure<T> value)? faliure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,7 +140,7 @@ class _$SuccessImpl<T> implements Success<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T data) success,
-    required TResult Function(String errorHandler) Faliure,
+    required TResult Function(String errorHandler) faliure,
   }) {
     return success(data);
   }
@@ -149,7 +149,7 @@ class _$SuccessImpl<T> implements Success<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T data)? success,
-    TResult? Function(String errorHandler)? Faliure,
+    TResult? Function(String errorHandler)? faliure,
   }) {
     return success?.call(data);
   }
@@ -158,7 +158,7 @@ class _$SuccessImpl<T> implements Success<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T data)? success,
-    TResult Function(String errorHandler)? Faliure,
+    TResult Function(String errorHandler)? faliure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -171,7 +171,7 @@ class _$SuccessImpl<T> implements Success<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Success<T> value) success,
-    required TResult Function(Faliure<T> value) Faliure,
+    required TResult Function(Faliure<T> value) faliure,
   }) {
     return success(this);
   }
@@ -180,7 +180,7 @@ class _$SuccessImpl<T> implements Success<T> {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Success<T> value)? success,
-    TResult? Function(Faliure<T> value)? Faliure,
+    TResult? Function(Faliure<T> value)? faliure,
   }) {
     return success?.call(this);
   }
@@ -189,7 +189,7 @@ class _$SuccessImpl<T> implements Success<T> {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Success<T> value)? success,
-    TResult Function(Faliure<T> value)? Faliure,
+    TResult Function(Faliure<T> value)? faliure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -249,7 +249,7 @@ class _$FaliureImpl<T> implements Faliure<T> {
 
   @override
   String toString() {
-    return 'ApiResult<$T>.Faliure(errorHandler: $errorHandler)';
+    return 'ApiResult<$T>.faliure(errorHandler: $errorHandler)';
   }
 
   @override
@@ -274,29 +274,29 @@ class _$FaliureImpl<T> implements Faliure<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T data) success,
-    required TResult Function(String errorHandler) Faliure,
+    required TResult Function(String errorHandler) faliure,
   }) {
-    return Faliure(errorHandler);
+    return faliure(errorHandler);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T data)? success,
-    TResult? Function(String errorHandler)? Faliure,
+    TResult? Function(String errorHandler)? faliure,
   }) {
-    return Faliure?.call(errorHandler);
+    return faliure?.call(errorHandler);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T data)? success,
-    TResult Function(String errorHandler)? Faliure,
+    TResult Function(String errorHandler)? faliure,
     required TResult orElse(),
   }) {
-    if (Faliure != null) {
-      return Faliure(errorHandler);
+    if (faliure != null) {
+      return faliure(errorHandler);
     }
     return orElse();
   }
@@ -305,29 +305,29 @@ class _$FaliureImpl<T> implements Faliure<T> {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Success<T> value) success,
-    required TResult Function(Faliure<T> value) Faliure,
+    required TResult Function(Faliure<T> value) faliure,
   }) {
-    return Faliure(this);
+    return faliure(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Success<T> value)? success,
-    TResult? Function(Faliure<T> value)? Faliure,
+    TResult? Function(Faliure<T> value)? faliure,
   }) {
-    return Faliure?.call(this);
+    return faliure?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Success<T> value)? success,
-    TResult Function(Faliure<T> value)? Faliure,
+    TResult Function(Faliure<T> value)? faliure,
     required TResult orElse(),
   }) {
-    if (Faliure != null) {
-      return Faliure(this);
+    if (faliure != null) {
+      return faliure(this);
     }
     return orElse();
   }
