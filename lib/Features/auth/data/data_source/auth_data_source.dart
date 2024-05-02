@@ -7,22 +7,24 @@ import 'package:storeapp/core/services/graphql/api_service.dart';
 import 'package:storeapp/core/services/graphql/graphql_queries/auth_queries.dart';
 
 class AuthDataSource {
-  AuthDataSource(this._graphql);
+  const AuthDataSource(this._graphql);
+
   final ApiService _graphql;
-//login
+
+  //Login
   Future<LoginResponse> login({required LoginRequest body}) async {
     final response =
-        await _graphql.login(AuthQueries().loginMapQueries(body: body));
+        await _graphql.login(AuthQueries().loginMapQuery(body: body));
     return response;
   }
 
-  // //UserRole
-  Future<UserRoleRsponse> userRole({required String token}) async {
+  //UserRole
+  Future<UserRoleRsponse> userRole(String token) async {
     final dio = Dio();
     dio.options.headers['Authorization'] = 'Bearer $token';
     final client = ApiService(dio);
     final response = await client.userRole();
-    debugPrint("user Role => ${response.userRole} ");
+    debugPrint('User Role => ${response.userRole}');
     return response;
   }
 }

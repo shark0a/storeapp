@@ -15,6 +15,7 @@ abstract class ApiService {
   Future<LoginResponse> login(
     @Body() Map<String, dynamic> mutation,
   );
+
   @GET('/api/v1/auth/profile')
   Future<UserRoleRsponse> userRole();
 }

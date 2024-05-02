@@ -63,7 +63,13 @@ class StoreApp extends StatelessWidget {
                         );
                       },
                       onGenerateRoute: AppRoutes.onGenerateRoute,
-                      initialRoute: AppRoutes.login,
+                      initialRoute:
+                          SharedPref().getString(SharedKeys.accessToken) != null
+                              ? SharedPref().getString(SharedKeys.userRole) ==
+                                      'admin'
+                                  ? AppRoutes.adminPage
+                                  : AppRoutes.customerPage
+                              : AppRoutes.login,
                     );
                   },
                 ),

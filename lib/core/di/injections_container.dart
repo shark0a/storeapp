@@ -15,7 +15,7 @@ Future<void> setupInjector() async {
 }
 
 Future<void> _initCore() async {
-  final dio = DioFactory.getdio();
+  final dio = DioFactory.getDio();
 
   sl
     ..registerFactory(AppCubit.new)

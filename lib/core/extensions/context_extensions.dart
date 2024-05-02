@@ -26,7 +26,7 @@ extension ContextExt on BuildContext {
         .pushReplacementNamed(routeName, arguments: arguments);
   }
 
-  Future<dynamic> pushUntil(String routeName, {Object? arguments}) {
+  Future<dynamic> pushNamedAndRemoveUntil(String routeName, {Object? arguments}) {
     return Navigator.of(this).pushNamedAndRemoveUntil(
       routeName,
       (route) => false,
