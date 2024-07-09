@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:storeapp/Features/auth/data/models/login_request.dart';
 import 'package:storeapp/Features/auth/data/models/login_response.dart';
+import 'package:storeapp/Features/auth/data/models/sign_up_request.dart';
+import 'package:storeapp/Features/auth/data/models/sign_up_response.dart';
 import 'package:storeapp/Features/auth/data/models/user_role_response.dart';
 import 'package:storeapp/core/services/graphql/api_service.dart';
 import 'package:storeapp/core/services/graphql/graphql_queries/auth_queries.dart';
@@ -25,6 +27,13 @@ class AuthDataSource {
     final client = ApiService(dio);
     final response = await client.userRole();
     debugPrint('User Role => ${response.userRole}');
+    return response;
+  }
+
+  //Sign UP
+  Future<SignUpResponse> signUp({required SignUpRequest body}) async {
+    final response =
+        await _graphql.signUp(AuthQueries().SignUpMapQuery(body: body));
     return response;
   }
 }

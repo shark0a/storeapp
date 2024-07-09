@@ -62,6 +62,7 @@ class StoreApp extends StatelessWidget {
                           ),
                         );
                       },
+                      navigatorKey: sl<GlobalKey<NavigatorState>>(),
                       onGenerateRoute: AppRoutes.onGenerateRoute,
                       initialRoute:
                           SharedPref().getString(SharedKeys.accessToken) != null

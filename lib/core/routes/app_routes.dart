@@ -6,6 +6,7 @@ import 'package:storeapp/Features/auth/presentions/bloc/auth_bloc.dart';
 import 'package:storeapp/Features/auth/presentions/screens/login_screen.dart';
 import 'package:storeapp/Features/auth/presentions/screens/sign_up_screen.dart';
 import 'package:storeapp/common/screens/under_build_page.dart';
+import 'package:storeapp/core/app/upload/cubit/uploadimage_cubit.dart';
 import 'package:storeapp/core/di/injections_container.dart';
 import 'package:storeapp/core/routes/base_routs.dart';
 
@@ -25,7 +26,10 @@ class AppRoutes {
         ));
 
       case signUp:
-        return BaseRoute(page: const SignUpScreen());
+        return BaseRoute(
+            page: MultiBlocProvider(providers: [
+          BlocProvider(create: (context) => sl<UploadimageCubit>())
+        ], child: const SignUpScreen()));
       case adminPage:
         return BaseRoute(page: const AdminScreen());
       case customerPage:

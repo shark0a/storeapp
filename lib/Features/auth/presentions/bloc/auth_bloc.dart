@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:storeapp/Features/auth/data/models/login_request.dart';
+import 'package:storeapp/Features/auth/data/models/sign_up_request.dart';
 import 'package:storeapp/Features/auth/data/repo/auth_repo.dart';
 import 'package:storeapp/core/services/pref_keys.dart';
 import 'package:storeapp/core/services/shared_pref.dart';
@@ -14,10 +15,12 @@ part 'auth_bloc.freezed.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this._repo) : super(const _Initial()) {
     on<LoginEvent>(_login);
+    on<SignUpEvent>(_signUp);
   }
   final AuthRepos _repo;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   FutureOr<void> _login(LoginEvent event, Emitter<AuthState> emit) async {
     emit(const AuthState.loading());
@@ -35,6 +38,23 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         await SharedPref().setInteger(SharedKeys.userId, user.useId ?? 0);
         await SharedPref().setString(SharedKeys.userRole, user.userRole ?? '');
         emit(AuthState.success(userRole: user.userRole ?? ''));
+      },
+      failure: (errorHandler) {
+        emit(AuthState.faliure(errMessage: errorHandler));
+      },
+    );
+  }
+
+  FutureOr<void> _signUp(SignUpEvent event, Emitter<AuthState> emit) async {
+    emit(const AuthState.loading());
+    final result = await _repo.signUp(SignUpRequest(
+        email: emailController.text.trim(),
+        name: nameController.text,
+        password: passwordController.text,
+        avatar: event.imageUrl));
+    await result.when(
+      success: (signdata) {
+        add(const AuthEvent.login());
       },
       failure: (errorHandler) {
         emit(AuthState.faliure(errMessage: errorHandler));
